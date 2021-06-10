@@ -7,7 +7,7 @@ addr — ip-адрес сервера; port — tcp-порт на сервере
 формирует ответ клиенту; отправляет ответ клиенту; имеет параметры командной строки: -p <port> — TCP-порт для работы
  (по умолчанию использует 7777); -a <addr> — IP-адрес для прослушивания (по умолчанию слушает все доступные адреса).
 '''
-
+import argparse
 from socket import *
 import pickle
 import time
@@ -15,10 +15,9 @@ import time
 
 s = socket(AF_INET, SOCK_STREAM)
 
-def start_soc():
-    s.connect(('localhost',7777))
+def start_soc(addr='localhost', port=7777):
+    s.connect((addr,port))
     #s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-
 
 
 def answer_to_send():

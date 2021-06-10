@@ -14,15 +14,22 @@ addr — ip-адрес сервера; port — tcp-порт на сервере
 
 from socket import  *
 import pickle
-import time
+import argparse
 
 
 s = socket(AF_INET, SOCK_STREAM)
 
-def start_soc():
-    s.bind(('',7777))
+def start_soc(addr='', port=7777):
+    s.bind((addr, port))
     s.listen(6)
     s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+
+
+def arg_parse(ADDRESS='', PORT=7777):
+    parser = argparse.ArgumentParser(description='IP,PORT parser')
+    parser.add_argument("-addr", default=ADDRESS)
+    parser.add_argument("-port", default=PORT, type=int)
+    return parser.parse_args()
 
 
 def main():
@@ -35,6 +42,7 @@ def main():
         }
         client.send(pickle.dumps(response))
         client.close()
+
 
 if __name__ == '__main__':
     socket = start_soc()
