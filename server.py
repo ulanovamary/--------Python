@@ -41,7 +41,13 @@ def main():
 
 
 if __name__ == '__main__':
-    socket = start_soc()
+    try:
+        socket = start_soc()
+    except Exception as e:
+        logger.critical(f'Ошибка инициализации сервера {e}')
+    else:
+        logger.info('Инициализация сервера прошла успешно')
+
     try:
         main()
     except Exception as e:
