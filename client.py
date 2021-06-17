@@ -1,8 +1,8 @@
-import argparse
 from socket import *
 import pickle
 import time
 import  logging
+import log.client_log_config
 
 
 logger = logging.getLogger('msnger_client')
@@ -17,7 +17,7 @@ def start_soc(addr='localhost', port=7777):
     except Exception as e:
         logger.critical(f'Соединение не установлено. Обнаружена ошибка {e}')
     else:
-        logger.info('Соединение с сервером установлено')
+        logger.info('Соединение клиента с сервером установлено')
         return s
     #s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 

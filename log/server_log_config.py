@@ -6,11 +6,11 @@ formatter = logging.Formatter(
     '%(asctime)s %(levelname)-10s %(module)s %(message)s'
     )
 
-log_handler =logging.handlers.TimedRotatingFileHandler('server.log', when='D', interval=1, backupCount=2)
+log_handler = logging.handlers.TimedRotatingFileHandler('server.log', when='D', interval=1, backupCount=2)
 log_handler.setFormatter(formatter)
 
 logger = logging.getLogger('msnger_server')
-logger.setLevel(logging.NOTSET)
+logger.setLevel(logging.INFO)
 logger.addHandler(log_handler)
 
 def to_console():

@@ -2,6 +2,8 @@ from socket import  *
 import pickle
 import argparse
 import logging
+import log.server_log_config
+
 
 logger = logging.getLogger('msnger_server')
 
